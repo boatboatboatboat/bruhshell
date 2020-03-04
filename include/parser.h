@@ -32,7 +32,9 @@ typedef struct	s_string_slice
 t_bool			seperate_commands(
 				char *input,
 				t_vector *commands);
-int				evaluate_input(char *input);
+int				evaluate_input(
+				char *input,
+				t_table *env);
 t_bool			cb_command(
 				char **input,
 				t_command_pair *output);

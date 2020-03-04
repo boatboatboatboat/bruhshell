@@ -20,7 +20,7 @@ t_bool	cb_string_core(
 	char chr;
 
 	chr = (*input)[*len];
-	if (chr == '\\')
+	if (chr == '\\' && **input != '\'')
 	{
 		if ((*input)[*len + 1] == '\\')
 		{
@@ -122,6 +122,8 @@ t_bool	cb_unit(
 	*input += len;
 	if (len > 0)
 		*output = out.raw;
+	else
+		vector_destroy(&out);
 	return (len > 0);
 }
 

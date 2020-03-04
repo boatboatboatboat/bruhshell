@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <runtime_loop.h>
 
 int			is_builtin(const char *name)
 {
@@ -82,6 +83,10 @@ int			run_builtin(
 		close_pipes(pipes);
 		exit(0);
 	}
+	else if (pid > 0)
+		vector_push(&g_running_processes, &pid);
+	else
+		perror("failed to setup command");
 	close_pipes(pipes);
 	return (pid);
 }

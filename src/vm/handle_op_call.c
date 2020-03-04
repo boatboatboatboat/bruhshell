@@ -16,7 +16,7 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 #include <ft_printf.h>
-#include <signal.h>
+#include <runtime_loop.h>
 
 const int	g_no_pipes[2] =
 {
@@ -46,29 +46,34 @@ void	get_pipes(
 int		spawn_process(
 		t_vm_state *state,
 		t_command_pair *command,
-		size_t idx,
 		int pipe_temp[2])
 {
 	int		pid;
-	int		status;
 	char	*destructor;
 
 	if (is_builtin(command->command))
 		pid = run_builtin(&command->args, &state->pipestack,
-				pipe_temp, &state->env);
+				pipe_temp, state->env);
 	else
 		pid = run_process(&command->args, &state->pipestack, pipe_temp,
-				&state->env);
-	if ((idx + 1) == state->callstack.size)
-	{
-		waitpid(pid, &status, 0);
-		ft_printf("%d finished with %d.\n", pid, WEXITSTATUS(status));
-		kill(pid, SIGINT);
-	}
+				state->env);
 	while (vector_pop(&command->args, &destructor))
 		free(destructor);
 	vector_destroy(&command->args);
 	return (pid != -1);
+}
+
+void	wait_for_processes(void)
+{
+	int	pid;
+	int	status;
+
+	while (vector_pop(&g_running_processes, &pid))
+	{
+		waitpid(pid, &status, 0);
+		if (WIFSIGNALED(status) && WTERMSIG(status) != 2)
+			ft_printf("Quit: %d\n", WTERMSIG(status));
+	}
 }
 
 int		handle_op_call(
@@ -84,10 +89,11 @@ int		handle_op_call(
 	{
 		vector_getr(&state->callstack, idx, (void **)&command);
 		get_pipes(state, idx, pipe_temp);
-		if (!spawn_process(state, command, idx, pipe_temp))
+		if (!spawn_process(state, command, pipe_temp))
 			return (0);
 		idx += 1;
 	}
+	wait_for_processes();
 	vector_destroy(&state->callstack);
 	vector_destroy(&state->pipestack);
 	if (!(vector_new(&state->pipestack, sizeof(int))

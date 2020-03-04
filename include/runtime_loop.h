@@ -14,13 +14,15 @@
 # define RUNTIME_LOOP_H
 
 # define PROMPT_STRING "\033[31;1m%s\033[0m > "
+# define PROMPT_HOME_STRING "\033[31;1m~%s\033[0m > "
 
-# include <vector.h>
+# include <table.h>
 
-static t_vector	g_running_processes;
+extern t_vector	g_running_processes;
+extern char		**environ;
 
-int				runtime_loop(void);
-int				display_prompt(void);
+int				runtime_loop(t_table *env);
+int				display_prompt(t_table *env);
 int				read_char(char *out);
 int				read_line(
 				char **line,

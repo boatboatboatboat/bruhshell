@@ -52,7 +52,7 @@ typedef struct	s_vm_state
 {
 	t_vector	callstack;
 	t_vector	pipestack;
-	t_table		env;
+	t_table		*env;
 }				t_vm_state;
 
 typedef struct	s_dispatch_item

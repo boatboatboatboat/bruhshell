@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#    File: Makefile                                       ::::::::             #
-#    Created on 2020/03/04 01:38:27                     :+:    :+:             #
-#    Created by dpattij <dpattij@student.codam.nl>     +:+                     #
+#    Project: memeshell420                                ::::::::             #
+#    Members: dpattij, tuperera                         :+:    :+:             #
+#    Copyright: 2020                                   +:+                     #
 #                                                     +#+                      #
-#    void *data = NULL;                              +#+                       #
-#    while (data == NULL)                           #+#    #+#                 #
-#        data = malloc(1337 * 42 * 21);            ########   odam.nl          #
+#                                                    +#+                       #
+#                                                   #+#    #+#                 #
+#    while (!(succeed = try()));                   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 

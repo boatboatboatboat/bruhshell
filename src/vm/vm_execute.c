@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <vm.h>
-#include <ft_printf.h>
 
 t_dispatch_item	g_dispatch_table[7] =
 {
@@ -37,7 +36,7 @@ int		destroy_state(t_vm_state *state)
 {
 	vector_destroy(&state->callstack);
 	vector_destroy(&state->pipestack);
-	return (1);
+	return (0);
 }
 
 int		vm_execute(
@@ -47,7 +46,7 @@ int		vm_execute(
 	t_vm_state		state;
 	int				dummy;
 
-	(void)env;
+	state.env = env;
 	dummy = -1;
 	if (!(vector_new(&state.pipestack, sizeof(int))
 	&& vector_new(&state.callstack, sizeof(t_command_pair))))
@@ -57,5 +56,6 @@ int		vm_execute(
 	if (!vector_foreachc(instructions, (int (*)(void *, void *)) execute_opcode,
 			&state))
 		return (destroy_state(&state));
+	destroy_state(&state);
 	return (1);
 }

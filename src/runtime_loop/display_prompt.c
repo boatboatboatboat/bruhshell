@@ -16,9 +16,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int		display_prompt(void)
+int		display_prompt(t_table *env)
 {
 	char	*current_directory;
+	char	*home;
 
 	current_directory = getcwd(NULL, 0);
 	if (current_directory == NULL)
@@ -26,7 +27,16 @@ int		display_prompt(void)
 		perror("unable to get working directory");
 		return (1);
 	}
-	ft_printf(PROMPT_STRING, current_directory);
+	home = table_get(env, "HOME");
+	if (home != NULL)
+	{
+		if (ft_strncmp(current_directory, home, ft_strlen(home)) == 0)
+			ft_printf(PROMPT_HOME_STRING, current_directory + ft_strlen(home));
+		else
+			ft_printf(PROMPT_STRING, current_directory);
+	}
+	else
+		ft_printf(PROMPT_STRING, current_directory);
 	free(current_directory);
 	return (0);
 }

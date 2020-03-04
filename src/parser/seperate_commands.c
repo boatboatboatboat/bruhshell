@@ -43,7 +43,7 @@ static t_bool	seperator_core_loop(
 	}
 	else if (is_string_quote(**input))
 		switch_mode(string_mode, **input);
-	else if (**input == '\\')
+	else if (**input == '\\' && *string_mode != '\'')
 	{
 		*input += 1;
 		if (**input == '\0')
