@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dpattij <dpattij@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/02/20 18:41:29 by dpattij           #+#    #+#              #
-#    Updated: 2020/02/20 20:22:08 by dpattij          ###   ########.fr        #
+#    File: Makefile                                       ::::::::             #
+#    Created on 2020/03/04 01:38:27                     :+:    :+:             #
+#    Created by dpattij <dpattij@student.codam.nl>     +:+                     #
+#                                                     +#+                      #
+#    void *data = NULL;                              +#+                       #
+#    while (data == NULL)                           #+#    #+#                 #
+#        data = malloc(1337 * 42 * 21);            ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,18 +23,58 @@ FLAGS_BIN_ASAN	=	-fsanitize=address
 INCLUDE_DIRS	=	./include/ ./libft/ ./libftprintf/include/
 SRC_DIR			=	./src/
 OBJ_DIR			=	./obj/
-SRC_SUBDIRS		=	runtime_loop std
+SRC_SUBDIRS		=	runtime_loop std parser vector vm table builtins
 
 LIBFT_DIR		=	./libft/
 LIBFTPRINTF_DIR =	./libftprintf/
 
 SRC_FILES		=	main \
+					builtins/builtin_cd \
+					builtins/builtin_echo \
+					builtins/builtin_env \
+					builtins/builtin_exit \
+					builtins/builtin_manage \
+					builtins/builtin_pwd \
+					parser/cb_command \
+					parser/cb_item \
+					parser/cb_line \
+					parser/cb_operation \
+					parser/is_control \
+					parser/is_literal_space \
+					parser/preprocess_line \
+					parser/seperate_commands \
+					parser/skip_atleast \
+					parser/take_char \
+					parser/take_number \
+					parser/take_while \
 					runtime_loop/display_prompt \
 					runtime_loop/read_char \
 					runtime_loop/read_line \
 					runtime_loop/take_input \
 					runtime_loop/runtime_loop \
-					std/ft_realloc
+					runtime_loop/evaluate_input \
+					std/ft_realloc \
+					table/table_destroy \
+					table/table_get \
+					table/table_insert \
+					table/table_new \
+					vector/vector_destroy \
+					vector/vector_get \
+					vector/vector_getr \
+					vector/vector_new \
+					vector/vector_push \
+					vector/vector_pop \
+					vector/vector_foreach \
+					vector/vector_resize \
+					vector/vector_with_capacity \
+					vm/handle_op_append \
+					vm/handle_op_call \
+					vm/handle_op_command \
+					vm/handle_op_pipe \
+					vm/handle_op_read \
+					vm/handle_op_write \
+					vm/run_process \
+					vm/vm_execute
 
 ###########################
 
@@ -88,8 +128,10 @@ asan: rdb
 rdebug: fclean
 	@$(MAKE) debug
 
-rdb: FLAGS = $(FLAGS_RDBG)
-rdb: re
+srdb: FLAGS = $(FLAGS_RDBG)
+srdb: all
+rdb: fclean
+	@$(MAKE) srdb
 
 rasan: fclean
 	@$(MAKE) asan

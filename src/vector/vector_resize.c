@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   vector_resize.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dpattij <dpattij@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/25 18:23:06 by dpattij           #+#    #+#             */
-/*   Updated: 2020/02/25 18:26:48 by dpattij          ###   ########.fr       */
+/*   Project: memeshell420                                ::::::::            */
+/*   Members: dpattij, tuperera                         :+:    :+:            */
+/*   Copyright: 2020                                   +:+                    */
+/*                                                    +#+                     */
+/*                                                   +#+                      */
+/*                                                  #+#    #+#                */
+/*   while (!(succeed = try()));                   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ t_bool	vector_resize(
 {
 	if (capacity <= self->capacity)
 		return (false);
-	self->raw = ft_realloc(self->raw, self->size, capacity);
+	self->raw = ft_realloc(self->raw, self->size * self->type_size,
+			capacity * self->type_size);
 	if (self->raw == NULL)
 		return (false);
 	self->capacity = capacity;

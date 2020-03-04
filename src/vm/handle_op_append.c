@@ -10,25 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <vm.h>
+#include <fcntl.h>
 #include <stdio.h>
 
-int	read_char(char *out)
+int	handle_op_append(
+		t_instruction *instruction,
+		t_vm_state *state)
 {
-	static char	buffer[512];
-	static int	head = 0;
-	static int	max;
+	int	pipe_temp[2];
 
-	if (head == 0)
-	{
-		max = read(STDIN_FILENO, buffer, 512);
-		if (max == -1)
-			return (0);
-	}
-	*out = max == 0 ? EOF : buffer[head];
-	if (max != 0)
-		head += 1;
-	if (head == max)
-		head = 0;
+	pipe_temp[0] = open(instruction->operand.filename,
+						O_CREAT | O_WRONLY | O_APPEND, 0644);
+	pipe_temp[1] = -1;
+	if (pipe_temp[0] == -1)
+		perror("failed to open file");
+	if (!(vector_push(&state->pipestack, &pipe_temp[0])
+		&& vector_push(&state->pipestack, &pipe_temp[1])))
+		return (0);
 	return (1);
 }

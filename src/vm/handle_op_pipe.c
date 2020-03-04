@@ -10,25 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <vm.h>
 #include <stdio.h>
+#include <unistd.h>
 
-int	read_char(char *out)
+int	handle_op_pipe(
+	t_instruction *instruction,
+	t_vm_state *state)
 {
-	static char	buffer[512];
-	static int	head = 0;
-	static int	max;
+	int	pipe_temp[2];
 
-	if (head == 0)
+	(void)instruction;
+	if (pipe(pipe_temp) == -1)
 	{
-		max = read(STDIN_FILENO, buffer, 512);
-		if (max == -1)
-			return (0);
+		perror("failed to setup pipes");
+		return (0);
 	}
-	*out = max == 0 ? EOF : buffer[head];
-	if (max != 0)
-		head += 1;
-	if (head == max)
-		head = 0;
+	if (!(vector_push(&state->pipestack, &pipe_temp[1])
+	&& vector_push(&state->pipestack, &pipe_temp[0])))
+		return (0);
 	return (1);
 }

@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   runtime_loop.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dpattij <dpattij@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/20 19:03:42 by dpattij           #+#    #+#             */
-/*   Updated: 2020/02/25 17:46:36 by dpattij          ###   ########.fr       */
+/*   Project: memeshell420                                ::::::::            */
+/*   Members: dpattij, tuperera                         :+:    :+:            */
+/*   Copyright: 2020                                   +:+                    */
+/*                                                    +#+                     */
+/*                                                   +#+                      */
+/*                                                  #+#    #+#                */
+/*   while (!(succeed = try()));                   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <runtime_loop.h>
+#include <parser.h>
 #include <stdlib.h>
 #include <ministd.h>
 
@@ -28,6 +29,7 @@ int		runtime_loop(void)
 			return (0);
 		if (res == 1)
 			break ;
+		evaluate_input(input_buffer);
 		free(input_buffer);
 	}
 	return (1);

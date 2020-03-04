@@ -10,25 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#include <vm.h>
 
-int	read_char(char *out)
+int	handle_op_command(
+		t_instruction *instruction,
+		t_vm_state *state)
 {
-	static char	buffer[512];
-	static int	head = 0;
-	static int	max;
-
-	if (head == 0)
-	{
-		max = read(STDIN_FILENO, buffer, 512);
-		if (max == -1)
-			return (0);
-	}
-	*out = max == 0 ? EOF : buffer[head];
-	if (max != 0)
-		head += 1;
-	if (head == max)
-		head = 0;
-	return (1);
+	return (vector_push(&state->callstack,
+			(void **)&instruction->operand.pair));
 }

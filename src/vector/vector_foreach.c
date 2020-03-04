@@ -10,25 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#include <vector.h>
 
-int	read_char(char *out)
+int		vector_foreachc(
+		t_vector *self,
+		int (*f)(void *, void *),
+		void *capture)
 {
-	static char	buffer[512];
-	static int	head = 0;
-	static int	max;
+	size_t	idx;
+	void	*ref;
 
-	if (head == 0)
+	idx = 0;
+	while (idx < self->size)
 	{
-		max = read(STDIN_FILENO, buffer, 512);
-		if (max == -1)
+		(void)vector_getr(self, idx, &ref);
+		if (!f(ref, capture))
 			return (0);
+		idx += 1;
 	}
-	*out = max == 0 ? EOF : buffer[head];
-	if (max != 0)
-		head += 1;
-	if (head == max)
-		head = 0;
+	return (1);
+}
+
+int		vector_foreach(
+		t_vector *self,
+		int (*f)(void *))
+{
+	size_t	idx;
+	void	*ref;
+
+	idx = 0;
+	while (idx < self->size)
+	{
+		(void)vector_getr(self, idx, &ref);
+		if (!f(ref))
+			return (0);
+		idx += 1;
+	}
 	return (1);
 }

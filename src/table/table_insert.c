@@ -10,25 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#include <table.h>
+#include <stdlib.h>
 
-int	read_char(char *out)
+t_bool			table_insert(
+		t_table *self,
+		char *key,
+		char *value)
 {
-	static char	buffer[512];
-	static int	head = 0;
-	static int	max;
+	t_table_entry	pair;
+	t_table_entry	*maybe;
 
-	if (head == 0)
+	maybe = table_get_entry(self, key);
+	if (maybe != NULL)
 	{
-		max = read(STDIN_FILENO, buffer, 512);
-		if (max == -1)
-			return (0);
+		free(maybe->key);
+		free(maybe->value);
+		maybe->key = key;
+		maybe->value = value;
+		return (true);
 	}
-	*out = max == 0 ? EOF : buffer[head];
-	if (max != 0)
-		head += 1;
-	if (head == max)
-		head = 0;
-	return (1);
+	else
+	{
+		pair.key = key;
+		pair.value = value;
+	}
+	return (vector_push(self, &pair));
 }

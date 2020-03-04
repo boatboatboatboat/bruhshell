@@ -10,25 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#include <table.h>
+#include <libft.h>
 
-int	read_char(char *out)
+char			*table_get(
+		t_table *self,
+		char *key)
 {
-	static char	buffer[512];
-	static int	head = 0;
-	static int	max;
+	t_table_entry	*entry;
 
-	if (head == 0)
+	entry = table_get_entry(self, key);
+	if (entry)
+		return (entry->value);
+	return (NULL);
+}
+
+t_table_entry	*table_get_entry(
+		t_table *self,
+		char *key)
+{
+	size_t			idx;
+	t_table_entry	*entry;
+
+	idx = 0;
+	while (idx < self->size)
 	{
-		max = read(STDIN_FILENO, buffer, 512);
-		if (max == -1)
-			return (0);
+		if (vector_getr(self, idx, (void **)&entry))
+			if (entry != NULL && ft_strncmp(entry->key, key, ULL_MAX) == 0)
+				return (entry);
+		idx += 1;
 	}
-	*out = max == 0 ? EOF : buffer[head];
-	if (max != 0)
-		head += 1;
-	if (head == max)
-		head = 0;
-	return (1);
+	return (NULL);
 }

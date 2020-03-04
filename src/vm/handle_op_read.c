@@ -10,25 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <vm.h>
 #include <stdio.h>
+#include <fcntl.h>
 
-int	read_char(char *out)
+int	handle_op_read(
+		t_instruction *instruction,
+		t_vm_state *state)
 {
-	static char	buffer[512];
-	static int	head = 0;
-	static int	max;
+	int	*previous_pipe;
 
-	if (head == 0)
-	{
-		max = read(STDIN_FILENO, buffer, 512);
-		if (max == -1)
-			return (0);
-	}
-	*out = max == 0 ? EOF : buffer[head];
-	if (max != 0)
-		head += 1;
-	if (head == max)
-		head = 0;
+	if (state->pipestack.size == 1)
+		vector_getr(&state->pipestack, 0, (void **)&previous_pipe);
+	else
+		vector_getr(&state->pipestack, state->pipestack.size - 1,
+				(void **)&previous_pipe);
+	*previous_pipe = open(instruction->operand.filename, O_RDONLY);
+	if (*previous_pipe == -1)
+		perror("failed to open file");
 	return (1);
 }

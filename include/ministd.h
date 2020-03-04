@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ministd.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dpattij <dpattij@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/20 20:21:38 by dpattij           #+#    #+#             */
-/*   Updated: 2020/02/25 17:46:36 by dpattij          ###   ########.fr       */
+/*   File: ministd.h                                      ::::::::            */
+/*   Created on 2020/03/04 00:40:54                     :+:    :+:            */
+/*   Created by dpattij <dpattij@student.codam.nl>     +:+                    */
+/*                                                    +#+                     */
+/*   void *data = NULL;                              +#+                      */
+/*   while (data == NULL)                           #+#    #+#                */
+/*       data = malloc(1337 * 42 * 21);            ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef enum	e_bool
 
 char	*ft_realloc(
 		char *ptr,
-		int ocapacity,
-		int capacity);
+		size_t ocapacity,
+		size_t capacity);
 
 #endif
