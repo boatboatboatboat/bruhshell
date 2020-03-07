@@ -24,6 +24,8 @@ const int	g_no_pipes[2] =
 	-1
 };
 
+int			g_program_status = 0;
+
 void	get_pipes(
 		t_vm_state *state,
 		size_t idx,
@@ -52,8 +54,11 @@ int		spawn_process(
 	char	*destructor;
 
 	if (is_builtin(command->command))
+	{
 		pid = run_builtin(&command->args, &state->pipestack,
 				pipe_temp, state->env);
+		g_program_status = pid;
+	}
 	else
 		pid = run_process(&command->args, &state->pipestack, pipe_temp,
 				state->env);
@@ -67,10 +72,18 @@ void	wait_for_processes(void)
 {
 	int	pid;
 	int	status;
+	int	top;
 
+	top = 1;
 	while (vector_pop(&g_running_processes, &pid))
 	{
 		waitpid(pid, &status, 0);
+		if (top)
+		{
+			if (WIFEXITED(status))
+				g_program_status = WEXITSTATUS(status);
+			top = 0;
+		}
 		if (WIFSIGNALED(status) && WTERMSIG(status) != 2)
 			ft_printf("Quit: %d\n", WTERMSIG(status));
 	}

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <vm.h>
-#include <stdio.h>
 #include <unistd.h>
 
 int	handle_op_pipe(
@@ -23,7 +22,7 @@ int	handle_op_pipe(
 	(void)instruction;
 	if (pipe(pipe_temp) == -1)
 	{
-		perror("failed to setup pipes");
+		ft_perror("failed to setup pipes");
 		return (0);
 	}
 	if (!(vector_push(&state->pipestack, &pipe_temp[1])

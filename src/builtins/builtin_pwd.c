@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <ministd.h>
 
 int	pwd_main(
 		int argc,
@@ -26,7 +27,7 @@ int	pwd_main(
 	directory = getcwd(NULL, 0);
 	if (directory == NULL)
 	{
-		perror("failed to get directory");
+		ft_perror("failed to get directory");
 		return (0);
 	}
 	ft_printf("%s\n", directory);

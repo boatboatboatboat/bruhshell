@@ -22,7 +22,7 @@ t_bool	cb_string_core(
 	chr = (*input)[*len];
 	if (chr == '\\' && **input != '\'')
 	{
-		if ((*input)[*len + 1] == '\\')
+		if (is_escapable((*input)[*len + 1]))
 		{
 			*len += 1;
 			chr = (*input)[*len];

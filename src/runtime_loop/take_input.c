@@ -29,7 +29,7 @@ int	take_input(char **input)
 	}
 	else if (readline_result == -1)
 	{
-		perror("failed to read line");
+		ft_perror("failed to read line");
 		return (1);
 	}
 	*input = line_buffer;

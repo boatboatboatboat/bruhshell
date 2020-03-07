@@ -10,33 +10,56 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include <builtin.h>
 #include <libft.h>
-#include <runtime_loop.h>
-#include <unistd.h>
-#include <stdlib.h>
 
-int		display_prompt(t_table *env)
+static t_bool	is_starter(char c)
 {
-	char	*current_directory;
-	char	*home;
+	return (ft_isalpha(c) || c == '_');
+}
 
-	current_directory = getcwd(NULL, 0);
-	if (current_directory == NULL)
+static t_bool	is_ident_char(char c)
+{
+	return (ft_isalnum(c) || c == '_');
+}
+
+static t_bool	is_valid_identifier(char *str)
+{
+	size_t	idx;
+
+	if (!is_starter(str[0]))
+		return (false);
+	idx = 1;
+	while (str[idx] != '\0')
 	{
-		ft_perror("unable to get working directory");
-		return (1);
+		if (!is_ident_char(str[idx]))
+			return (false);
+		idx += 1;
 	}
-	home = table_get(env, "HOME");
-	if (home != NULL)
+	return (true);
+}
+
+int	unset_main(
+		int argc,
+		char **argv,
+		t_table *env)
+{
+	int	idx;
+
+	idx = 0;
+	argc -= 1;
+	while (idx < argc)
 	{
-		if (ft_strncmp(current_directory, home, ft_strlen(home)) == 0)
-			ft_printf(PROMPT_HOME_STRING, current_directory + ft_strlen(home));
+		idx += 1;
+		if (is_valid_identifier(argv[idx]))
+			table_remove(env, ft_strdup(argv[idx]));
 		else
-			ft_printf(PROMPT_STRING, current_directory);
+		{
+			ft_putstr_fd("unset: ", 2);
+			ft_putstr_fd("'", 2);
+			ft_putstr_fd(argv[idx], 2);
+			ft_putendl_fd("': not a valid identifier", 2);
+		}
 	}
-	else
-		ft_printf(PROMPT_STRING, current_directory);
-	free(current_directory);
 	return (0);
 }

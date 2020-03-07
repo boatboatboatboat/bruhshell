@@ -10,33 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
-#include <libft.h>
-#include <runtime_loop.h>
-#include <unistd.h>
+#include <table.h>
 #include <stdlib.h>
 
-int		display_prompt(t_table *env)
+t_bool			table_remove(
+		t_table *self,
+		char *key)
 {
-	char	*current_directory;
-	char	*home;
+	t_table_entry	*maybe;
 
-	current_directory = getcwd(NULL, 0);
-	if (current_directory == NULL)
+	maybe = table_get_entry(self, key);
+	if (maybe != NULL)
 	{
-		ft_perror("unable to get working directory");
-		return (1);
-	}
-	home = table_get(env, "HOME");
-	if (home != NULL)
-	{
-		if (ft_strncmp(current_directory, home, ft_strlen(home)) == 0)
-			ft_printf(PROMPT_HOME_STRING, current_directory + ft_strlen(home));
-		else
-			ft_printf(PROMPT_STRING, current_directory);
+		free(maybe->key);
+		free(maybe->value);
+		maybe->key = key;
+		maybe->value = NULL;
+		return (true);
 	}
 	else
-		ft_printf(PROMPT_STRING, current_directory);
-	free(current_directory);
-	return (0);
+		return (false);
 }

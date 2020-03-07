@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <vm.h>
-#include <stdio.h>
 #include <fcntl.h>
 
 int	handle_op_read(
@@ -27,6 +26,6 @@ int	handle_op_read(
 				(void **)&previous_pipe);
 	*previous_pipe = open(instruction->operand.filename, O_RDONLY);
 	if (*previous_pipe == -1)
-		perror("failed to open file");
+		ft_perror("failed to open file");
 	return (1);
 }

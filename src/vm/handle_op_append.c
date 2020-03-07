@@ -24,7 +24,7 @@ int	handle_op_append(
 						O_CREAT | O_WRONLY | O_APPEND, 0644);
 	pipe_temp[1] = -1;
 	if (pipe_temp[0] == -1)
-		perror("failed to open file");
+		ft_perror("failed to open file");
 	if (!(vector_push(&state->pipestack, &pipe_temp[0])
 		&& vector_push(&state->pipestack, &pipe_temp[1])))
 		return (0);

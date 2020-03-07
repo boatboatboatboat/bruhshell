@@ -24,7 +24,9 @@ int			is_builtin(const char *name)
 	|| ft_strncmp(name, "exit", 5) == 0
 	|| ft_strncmp(name, "cd", 3) == 0
 	|| ft_strncmp(name, "pwd", 4) == 0
-	|| ft_strncmp(name, "env", 4) == 0);
+	|| ft_strncmp(name, "env", 4) == 0
+	|| ft_strncmp(name, "export", 7) == 0
+	|| ft_strncmp(name, "unset", 6) == 0);
 }
 
 static void	build_pipes(
@@ -38,12 +40,12 @@ static void	build_pipes(
 			close(pipe);
 	if (pipes[0] != -1 && dup2(pipes[0], STDIN_FILENO) == -1)
 	{
-		perror("failed to setup reader pipe");
+		ft_perror("failed to setup reader pipe");
 		exit(1);
 	}
 	if (pipes[1] != -1 && dup2(pipes[1], STDOUT_FILENO) == -1)
 	{
-		perror("failed to setup writer pipe");
+		ft_perror("failed to setup writer pipe");
 		exit(1);
 	}
 }
@@ -66,10 +68,14 @@ int			run_builtin(
 	char	*name;
 
 	(void)vector_get(args, 0, &name);
-	if (ft_strncmp(name, "exit", 5) == 0)
+	if (ft_strncmp(name, "exit", 5) == 0 && pipe_stack->size == 1)
 		return (exit_main(0, 0));
 	else if (ft_strncmp(name, "cd", 3) == 0 && pipe_stack->size == 1)
 		return (cd_main(args->size, (char **)args->raw));
+	else if (ft_strncmp(name, "unset", 6) == 0 && pipe_stack->size == 1)
+		return (unset_main(args->size, (char **)args->raw, env));
+	else if (ft_strncmp(name, "export", 7) == 0 && pipe_stack->size == 1)
+		return (export_main(args->size, (char **)args->raw, env));
 	pid = fork();
 	if (pid == 0)
 	{
@@ -86,7 +92,7 @@ int			run_builtin(
 	else if (pid > 0)
 		vector_push(&g_running_processes, &pid);
 	else
-		perror("failed to setup command");
+		ft_putendl_fd("failed to setup command", 2);
 	close_pipes(pipes);
 	return (pid);
 }

@@ -11,13 +11,16 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
+#include <ministd.h>
 
 int	cd_main(
 		int argc,
 		char **argv)
 {
 	if (argc > 1 && chdir(argv[1]) == -1)
-		perror("cd");
+	{
+		ft_perror("cd");
+		return (1);
+	}
 	return (0);
 }

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <table.h>
-#include <stdio.h>
 #include <unistd.h>
 #include <libft.h>
 #include <errno.h>
@@ -25,7 +24,7 @@ static int	null_term_args(t_vector *args)
 
 	if (!vector_push(args, &null))
 	{
-		perror("failed to setup command");
+		ft_perror("failed to setup command");
 		return (1);
 	}
 	return (0);
@@ -42,12 +41,12 @@ static void	build_pipes(
 			close(pipe);
 	if (pipes[0] != -1 && dup2(pipes[0], STDIN_FILENO) == -1)
 	{
-		perror("failed to setup reader pipe");
+		ft_perror("failed to setup reader pipe");
 		exit(1);
 	}
 	if (pipes[1] != -1 && dup2(pipes[1], STDOUT_FILENO) == -1)
 	{
-		perror("failed to setup writer pipe");
+		ft_perror("failed to setup writer pipe");
 		exit(1);
 	}
 }
@@ -96,7 +95,7 @@ int			run_process(
 	else if (pid > 0)
 		vector_push(&g_running_processes, &pid);
 	else
-		perror("failed to setup command");
+		ft_perror("failed to setup command");
 	close_pipes(pipes);
 	return (pid);
 }

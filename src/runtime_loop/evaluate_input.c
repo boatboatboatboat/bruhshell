@@ -23,40 +23,36 @@
 **  evaluate (evaluate the comamnd
 */
 
-int		dbg_print_sslice(t_string_slice *slice)
-{
-	size_t	idx;
-
-	idx = 0;
-	ft_printf("[");
-	while (idx < slice->len)
-	{
-		ft_printf("%c", slice->str[idx]);
-		idx += 1;
-	}
-	ft_printf("]\n");
-	return (1);
-}
-
 int		expand_evaluate(
 		t_string_slice *command,
 		t_table *env)
 {
 	t_vector	instructions;
+	char		*line;
+	char		*orgline;
 
 	if (!vector_new(&instructions, sizeof(t_instruction)))
 		return (0);
 	command->str[command->len] = '\0';
-	if (!parse_line(&command->str, &instructions))
+	if (!expand_line(command->str, env, &orgline))
 	{
-		ft_printf("eval error: failed to parse line\n");
+		ft_printf("eval error: failed to expand line\n");
 		return (0);
 	}
+	line = orgline;
+	if (!parse_line(&line, &instructions))
+	{
+		ft_printf("eval error: failed to parse line\n");
+		free(orgline);
+		return (0);
+	}
+	free(orgline);
 	if (!vm_execute(&instructions, env))
 	{
 		ft_printf("eval error: virtual machine crashed\n");
 		return (0);
 	}
+	vector_destroy(&instructions);
 	return (1);
 }
 
@@ -71,13 +67,13 @@ int		evaluate_input(
 		return (1);
 	if (!sanitize_line(&input, &sanitized))
 	{
-		ft_printf("preprocessor error: line sanitization failed\n");
+		ft_printf("preprocessor error: failed to sanitize line\n");
 		vector_destroy(&commands);
 		return (1);
 	}
 	if (!seperate_commands(sanitized, &commands))
 	{
-		ft_printf("preprocessor error: command seperation failed\n");
+		ft_printf("preprocessor error: failed to seperate commands\n");
 		vector_destroy(&commands);
 		return (1);
 	}

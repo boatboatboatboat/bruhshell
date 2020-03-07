@@ -36,7 +36,7 @@ void	global_ctor(void)
 {
 	if (!vector_new(&g_running_processes, sizeof(int)))
 	{
-		perror("failed to initialize process stack");
+		ft_perror("failed to initialize process stack");
 		exit(1);
 	}
 	signal(SIGINT, signal_handler);
@@ -65,7 +65,8 @@ int		load_env(t_table *env)
 			free(var[1]);
 			return (0);
 		}
-		table_insert(env, var[0], var[1]);
+		if (!table_insert(env, var[0], var[1]))
+			return (0);
 		idx += 1;
 	}
 	return (1);
@@ -77,12 +78,12 @@ int		main(void)
 
 	if (!table_new(&env))
 	{
-		perror("failed to initialize environment");
+		ft_perror("failed to initialize environment");
 		exit(1);
 	}
 	if (!load_env(&env))
 	{
-		perror("failed to copy environment");
+		ft_perror("failed to copy environment");
 		exit(1);
 	}
 	global_ctor();

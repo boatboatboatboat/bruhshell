@@ -14,7 +14,7 @@
 
 t_bool		is_control(char c)
 {
-	return (c == ';' || c == '>' || c == '<' || c == '|' || c == ' ');
+	return (c == '>' || c == '<' || c == '|' || c == ' ');
 }
 
 t_bool		is_not_control(char c)
