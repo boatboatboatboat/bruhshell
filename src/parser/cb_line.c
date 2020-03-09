@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cb_line.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dpattij <dpattij@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/21 07:21:28 by dpattij           #+#    #+#             */
-/*   Updated: 2020/01/23 14:09:46 by dpattij          ###   ########.fr       */
+/*   Project: memeshell420                                ::::::::            */
+/*   Members: dpattij, tuperera                         :+:    :+:            */
+/*   Copyright: 2020                                   +:+                    */
+/*                                                    +#+                     */
+/*                                                   +#+                      */
+/*                                                  #+#    #+#                */
+/*   while (!(succeed = try()));                   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,14 @@ static void		destroy_instruction(t_instruction instruction)
 {
 	char	*tmp;
 
-	free(instruction.operand.pair.command);
-	while (vector_pop(&instruction.operand.pair.args, &tmp))
-		free(tmp);
-	vector_destroy(&instruction.operand.pair.args);
+	if (instruction.opcode == OP_COMMAND)
+	{
+		while (vector_pop(&instruction.operand.pair.args, &tmp))
+			free(tmp);
+		vector_destroy(&instruction.operand.pair.args);
+	}
+	else if (instruction.opcode != OP_CALL && instruction.opcode != OP_PIPE)
+		free(instruction.operand.filename);
 }
 
 static t_bool	parse_op_and_com(
@@ -59,6 +63,15 @@ static t_bool	parse_op_and_com(
 	return (true);
 }
 
+static t_bool	clean_instructions(t_vector *instructions)
+{
+	t_instruction	out;
+
+	while (vector_pop(instructions, &out))
+		destroy_instruction(out);
+	return (false);
+}
+
 t_bool			parse_line(
 		char **input,
 		t_vector *instructions)
@@ -67,22 +80,22 @@ t_bool			parse_line(
 	t_bool			success;
 
 	take_while(input, NULL, is_literal_space);
+	if (**input == '\0')
+		return (true);
 	if (cb_command(input, &instruction.operand.pair))
 	{
 		instruction.opcode = OP_COMMAND;
 		if (!vector_push(instructions, &instruction))
-		{
-			destroy_instruction(instruction);
-			return (false);
-		}
+			return (clean_instructions(instructions));
 		if (!parse_op_and_com(input, instructions, &success) || !success)
-			return (false);
+			return (clean_instructions(instructions));
 		instruction.opcode = OP_CALL;
 		if (!vector_push(instructions, &instruction))
 		{
 			destroy_instruction(instruction);
-			return (false);
+			return (clean_instructions(instructions));
 		}
+		return (true);
 	}
-	return (true);
+	return (false);
 }

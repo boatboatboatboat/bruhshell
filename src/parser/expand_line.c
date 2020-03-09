@@ -13,6 +13,7 @@
 #include <parser.h>
 #include <libft.h>
 #include <runtime_loop.h>
+#include <stdlib.h>
 
 /*
 ** this file is essentially unreadable because
@@ -25,11 +26,14 @@ static t_bool	push_string_to_vector(
 		t_vector *vec,
 		char *str)
 {
-	while (*str != '\0')
+	size_t	idx;
+
+	idx = 0;
+	while (str[idx] != '\0')
 	{
-		if (!vector_push(vec, str))
+		if (!vector_push(vec, &str[idx]))
 			return (false);
-		str += 1;
+		idx += 1;
 	}
 	return (true);
 }
@@ -90,9 +94,11 @@ static int		check_variable(
 		value = ft_itoa(g_program_status);
 		if (value != NULL && !push_string_to_vector(builder, value))
 		{
+			free(value);
 			vector_destroy(builder);
 			return (0);
 		}
+		free(value);
 		*idx += 2;
 		return (1);
 	}
@@ -112,7 +118,7 @@ static t_bool	expand_line_core(
 			modes[1] = check_variable(input, idx, wtf[1], wtf[0]);
 			if (modes[1] == 0)
 				return (false);
-			else if (modes[0] == 1)
+			else if (modes[1] == 1)
 				continue ;
 		}
 		else if (is_string_quote(input[*idx]) && modes[0] == 0)

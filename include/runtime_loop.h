@@ -16,6 +16,10 @@
 # define PROMPT_STRING "\033[31;1m%s\033[0m > "
 # define PROMPT_HOME_STRING "\033[31;1m~%s\033[0m > "
 
+# define TAKE_INPUT_EXIT_CALLED 2
+# define TAKE_INPUT_READLINE_FAILED 1
+# define TAKE_INPUT_SUCCESS 0
+
 # include <table.h>
 
 extern t_vector	g_running_processes;

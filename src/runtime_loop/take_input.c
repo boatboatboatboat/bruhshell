@@ -12,7 +12,6 @@
 
 #include <runtime_loop.h>
 #include <ft_printf.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 int	take_input(char **input)

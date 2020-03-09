@@ -90,7 +90,7 @@ int			run_process(
 		ft_putstr_fd(": ", STDERR_FILENO);
 		ft_putendl_fd(strerror(errno), STDERR_FILENO);
 		close_pipes(pipes);
-		exit(0);
+		exit(127);
 	}
 	else if (pid > 0)
 		vector_push(&g_running_processes, &pid);

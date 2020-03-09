@@ -12,7 +12,7 @@
 
 #include <vm.h>
 #include <fcntl.h>
-#include <stdio.h>
+#include <stdlib.h>
 
 int	handle_op_append(
 		t_instruction *instruction,
@@ -23,6 +23,7 @@ int	handle_op_append(
 	pipe_temp[0] = open(instruction->operand.filename,
 						O_CREAT | O_WRONLY | O_APPEND, 0644);
 	pipe_temp[1] = -1;
+	free(instruction->operand.filename);
 	if (pipe_temp[0] == -1)
 		ft_perror("failed to open file");
 	if (!(vector_push(&state->pipestack, &pipe_temp[0])

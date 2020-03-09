@@ -29,7 +29,7 @@ typedef struct	s_string_slice
 	size_t		len;
 }				t_string_slice;
 
-t_bool			seperate_commands(
+t_bool			separate_commands(
 				char *input,
 				t_vector *commands);
 int				evaluate_input(

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   builtin_exit.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dpattij <dpattij@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/16 04:26:13 by dpattij           #+#    #+#             */
-/*   Updated: 2020/01/31 23:17:15 by dpattij          ###   ########.fr       */
+/*   Project: memeshell420                                ::::::::            */
+/*   Members: dpattij, tuperera                         :+:    :+:            */
+/*   Copyright: 2020                                   +:+                    */
+/*                                                    +#+                     */
+/*                                                   +#+                      */
+/*                                                  #+#    #+#                */
+/*   while (!(succeed = try()));                   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <ft_printf.h>
 #include <ministd.h>
 #include <libft.h>
+#include <runtime_loop.h>
 
 static t_bool	take_n(const char *str, unsigned char *out)
 {
@@ -36,7 +37,7 @@ int				exit_main(
 
 	ft_printf("exit\n");
 	if (argc == 1)
-		exit(0);
+		exit(g_program_status);
 	if (!take_n(argv[1], &code))
 	{
 		ft_putstr_fd("exit: ", 2);

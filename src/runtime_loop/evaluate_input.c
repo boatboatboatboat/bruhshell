@@ -16,11 +16,9 @@
 #include <stdlib.h>
 
 /*
-** Three step parser:
-** seperate (seperate commands with ;)
-** foreach:
-**  expand (expand variables within a single command)
-**  evaluate (evaluate the comamnd
+** evaluate_unit: parse and execute a command
+**  compiles a command without expanding variables
+**  and executes it within the "vm"
 */
 
 static int	evaluate_unit(
@@ -35,7 +33,7 @@ static int	evaluate_unit(
 	pline_cpy = line;
 	if (!parse_line(&pline_cpy, &instructions))
 	{
-		ft_printf("eval error: failed to parse line\n");
+		ft_printf("eval error: failed to parse command\n");
 		vector_destroy(&instructions);
 		return (0);
 	}
@@ -48,6 +46,12 @@ static int	evaluate_unit(
 	vector_destroy(&instructions);
 	return (1);
 }
+
+/*
+** expand_evaluate: expand the variables and evaluate (within) a command.
+**  variables are expanded through expand_line,
+**  code is evaluated through evaluate_unit.
+*/
 
 static int	expand_evaluate(
 		t_string_slice *command,
@@ -70,6 +74,13 @@ static int	expand_evaluate(
 	return (1);
 }
 
+/*
+** evaluate_input: evaluates a line of 'shell'
+**  it removes escape sequences using sanitize_line,
+**  then it separates all the commands with ';'
+**  and then it calls expand_evaluate on each separated command.
+*/
+
 int			evaluate_input(
 		char *input,
 		t_table *env)
@@ -85,9 +96,9 @@ int			evaluate_input(
 		vector_destroy(&commands);
 		return (1);
 	}
-	if (!seperate_commands(sanitized, &commands))
+	if (!separate_commands(sanitized, &commands))
 	{
-		ft_printf("preprocessor error: failed to seperate commands\n");
+		ft_printf("preprocessor error: failed to separate commands\n");
 		free(sanitized);
 		vector_destroy(&commands);
 		return (1);

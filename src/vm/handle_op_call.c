@@ -24,6 +24,32 @@ const int	g_no_pipes[2] =
 	-1
 };
 
+const char	*g_sig_names[22] =
+{
+	"Bogus signal",
+	"Hangup",
+	"Interrupt",
+	"Quit",
+	"Illegal instruction",
+	"Trace/BPT trap",
+	"Abort trap",
+	"EMT trap",
+	"Floating point exception",
+	"Killed",
+	"Bus error",
+	"Segmentation fault",
+	"Bad system call",
+	"Broken pipe",
+	"Alarm clock",
+	"Terminated",
+	"Cputime limit exceeded",
+	"Filesize limit exceeded",
+	"Virtual timer expired",
+	"Profiling timer expired",
+	"User defined signal 1",
+	"User defined signal 2"
+};
+
 int			g_program_status = 0;
 
 static void	get_pipes(
@@ -82,10 +108,17 @@ static void	wait_for_processes(void)
 		{
 			if (WIFEXITED(status))
 				g_program_status = WEXITSTATUS(status);
+			if (WIFSIGNALED(status))
+			{
+				status = WTERMSIG(status);
+				g_program_status = 128 + status;
+				if (status < 23 && status != 2)
+					ft_printf("%s: %d\n", g_sig_names[status], status);
+				else if (status != 2)
+					ft_printf("Unknown Signal: %d\n", status);
+			}
 			top = 0;
 		}
-		if (WIFSIGNALED(status) && WTERMSIG(status) != 2)
-			ft_printf("Quit: %d\n", WTERMSIG(status));
 	}
 }
 

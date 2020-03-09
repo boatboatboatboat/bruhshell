@@ -6,7 +6,7 @@
 #                                                     +#+                      #
 #                                                    +#+                       #
 #                                                   #+#    #+#                 #
-#    while (!(succeed = try()));                   ########   odam.nl          #
+#    if you read this you are stupid lol           ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRC_FILES		=	main \
 					parser/is_literal_space \
 					parser/is_string_quote \
 					parser/preprocess_line \
-					parser/seperate_commands \
+					parser/separate_commands \
 					parser/skip_atleast \
 					parser/take_char \
 					parser/take_number \
@@ -139,6 +139,9 @@ srdb: FLAGS = $(FLAGS_RDBG)
 srdb: all
 rdb: fclean
 	@$(MAKE) srdb
+
+rafl: export CC = ~/afl/afl-clang
+rafl: rasan
 
 rasan: fclean
 	@$(MAKE) asan

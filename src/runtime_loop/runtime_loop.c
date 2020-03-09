@@ -15,6 +15,14 @@
 #include <stdlib.h>
 #include <ministd.h>
 
+/*
+** core loop of the shell,
+** consists out of:
+** 1. displaying a prompt
+** 2. reading a line (taking input)
+** 3. evaluating the line (running the 'code' in the line)
+*/
+
 int		runtime_loop(t_table *env)
 {
 	char		*input_buffer;

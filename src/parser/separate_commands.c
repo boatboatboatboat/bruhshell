@@ -11,31 +11,59 @@
 /* ************************************************************************** */
 
 #include <parser.h>
+#include <vector.h>
 
-t_bool		cb_operation(
-		char **input,
-		t_instruction *operation)
+static void		switch_mode(
+		int *mode,
+		char input)
 {
-	t_instruction	tmp;
+	if (*mode == 0)
+		*mode = input;
+	else if (*mode == input)
+		*mode = 0;
+}
 
-	if (**input == '|')
-		tmp.opcode = OP_PIPE;
-	else if (**input == '<')
-		tmp.opcode = OP_READ;
-	else if (**input == '>')
+static t_bool	separate_core_loop(
+		char **input,
+		int *string_mode,
+		t_string_slice *str,
+		t_vector *commands)
+{
+	if (**input == CMD_SEPERATOR && *string_mode == 0)
 	{
-		tmp.opcode = (*input)[1] == '>' ? OP_APPEND : OP_WRITE;
-		if ((*input)[1] == '>')
-			*input += 1;
-	}
-	else
-		return (false);
-	*input += 1;
-	take_while(input, NULL, is_literal_space);
-	if (tmp.opcode == OP_WRITE || tmp.opcode == OP_READ
-		|| tmp.opcode == OP_APPEND)
-		if (!cb_item(input, &tmp.operand.filename))
+		str->len = *input - str->str;
+		if (!vector_push(commands, str))
 			return (false);
-	*operation = tmp;
+		str->str = *input + 1;
+	}
+	else if (is_string_quote(**input))
+		switch_mode(string_mode, **input);
+	else if (**input == '\\' && *string_mode != '\'')
+	{
+		*input += 1;
+		if (**input == '\0')
+			return (false);
+	}
+	*input += 1;
+	return (true);
+}
+
+t_bool			separate_commands(
+		char *input,
+		t_vector *commands)
+{
+	int				string_mode;
+	t_string_slice	str;
+
+	string_mode = 0;
+	str.str = input;
+	while (*input != '\0')
+		if (!separate_core_loop(&input, &string_mode, &str, commands))
+			return (false);
+	if (string_mode != 0)
+		return (false);
+	str.len = input - str.str;
+	if (!vector_push(commands, &str))
+		return (false);
 	return (true);
 }
