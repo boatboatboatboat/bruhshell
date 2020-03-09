@@ -68,31 +68,25 @@ t_bool	cb_string_core(
 
 t_bool	cb_string(
 		char **input,
-		char **output)
+		size_t *len,
+		t_vector *out)
 {
-	size_t		len;
-	t_vector	out;
-	char		chr;
+	char	start;
 
-	if (!vector_new(&out, sizeof(char)))
-		return (false);
-	if (**input != '\'' && **input != '\"')
+	start = (*input)[*len];
+	if (start != '\'' && start != '\"')
 	{
-		vector_destroy(&out);
+		vector_destroy(out);
 		return (false);
 	}
-	len = 1;
-	while ((*input)[len] != **input)
+	*len += 1;
+	while ((*input)[*len] != start)
 	{
-		if (!cb_string_core(input, &len, &out))
+		if (!cb_string_core(input, len, out))
 			return (false);
-		len += 1;
+		*len += 1;
 	}
-	chr = '\0';
-	if (!vector_push(&out, &chr))
-		return (false);
-	*input += len + 1;
-	*output = out.raw;
+	*len += 1;
 	return (true);
 }
 
@@ -101,24 +95,26 @@ t_bool	cb_unit_core(
 		size_t *len,
 		t_vector *out)
 {
-	char chr;
+	char	chr;
 
 	while (is_not_control((*input)[*len]) && (*input)[*len] != '\0')
 	{
 		chr = (*input)[*len];
-		if (chr == '\\')
+		if (chr == '\\' && (*input)[*len + 1] != '\0')
+			*len += 1;
+		else if (chr == '\\')
 		{
-			if ((*input)[*len + 1] != '\0')
-			{
-				*len += 1;
-				chr = (*input)[*len];
-			}
-			else
-			{
-				vector_destroy(out);
-				return (false);
-			}
+			vector_destroy(out);
+			return (false);
 		}
+		else if ((chr == '\"' || chr == '\'') && cb_string(input, len, out))
+			continue ;
+		else if ((chr == '\"' || chr == '\''))
+		{
+			vector_destroy(out);
+			return (false);
+		}
+		chr = (*input)[*len];
 		if (chr != '\0' && !vector_push(out, &chr))
 			return (false);
 		*len += 1;
@@ -127,7 +123,9 @@ t_bool	cb_unit_core(
 }
 
 /*
-** cb_unit:
+** cb_item (previously cb_unit):
+**  THESE DOCS ARE BAD
+**  CONTACT ME ON SLACK FOR THIS LOL
 **  parses command 'units'
 **  a unit is literally text-that-is-not-in-string-quotes
 **
@@ -137,7 +135,7 @@ t_bool	cb_unit_core(
 **  "echo" 'hello' -> echo is a string, hello is a string
 */
 
-t_bool	cb_unit(
+t_bool	cb_item(
 		char **input,
 		char **output)
 {
@@ -159,11 +157,4 @@ t_bool	cb_unit(
 	else
 		vector_destroy(&out);
 	return (len > 0);
-}
-
-t_bool	cb_item(
-		char **input,
-		char **output)
-{
-	return (cb_string(input, output) || cb_unit(input, output));
 }
