@@ -26,7 +26,7 @@ const int	g_no_pipes[2] =
 
 int			g_program_status = 0;
 
-void	get_pipes(
+static void	get_pipes(
 		t_vm_state *state,
 		size_t idx,
 		int pipe_temp[2])
@@ -45,7 +45,7 @@ void	get_pipes(
 		ft_memcpy(pipe_temp, g_no_pipes, sizeof(g_no_pipes));
 }
 
-int		spawn_process(
+static int	spawn_process(
 		t_vm_state *state,
 		t_command_pair *command,
 		int pipe_temp[2])
@@ -68,7 +68,7 @@ int		spawn_process(
 	return (pid != -1);
 }
 
-void	wait_for_processes(void)
+static void	wait_for_processes(void)
 {
 	int	pid;
 	int	status;
@@ -89,7 +89,7 @@ void	wait_for_processes(void)
 	}
 }
 
-int		handle_op_call(
+int			handle_op_call(
 		t_instruction *instruction,
 		t_vm_state *state)
 {

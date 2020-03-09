@@ -4,6 +4,8 @@ project(memeshell420 C)
 set(CMAKE_C_STANDARD 90)
 
 file(GLOB srcs
+        "libft/*"
+        "libftprintf/*"
         "src/*.c"
         "src/runtime_loop/*.c"
         "src/std/*.c"

@@ -42,5 +42,13 @@ int		env_main(
 		int argc,
 		char **argv,
 		t_table *env);
+int		unset_main(
+		int argc,
+		char **argv,
+		t_table *env);
+int		export_main(
+		int argc,
+		char **argv,
+		t_table *env);
 
 #endif

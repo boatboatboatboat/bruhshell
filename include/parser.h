@@ -72,5 +72,11 @@ t_bool			sanitize_line(
 t_bool			parse_line(
 				char **input,
 				t_vector *instructions);
+t_bool			expand_line(
+				char *input,
+				t_table *env,
+				char **output);
+t_bool			is_escapable(char c);
+t_bool			is_string_quote(char c);
 
 #endif

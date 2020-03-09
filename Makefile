@@ -33,14 +33,19 @@ SRC_FILES		=	main \
 					builtins/builtin_echo \
 					builtins/builtin_env \
 					builtins/builtin_exit \
+					builtins/builtin_export \
 					builtins/builtin_manage \
 					builtins/builtin_pwd \
+					builtins/builtin_unset \
 					parser/cb_command \
 					parser/cb_item \
 					parser/cb_line \
 					parser/cb_operation \
+					parser/expand_line \
 					parser/is_control \
+					parser/is_escapable \
 					parser/is_literal_space \
+					parser/is_string_quote \
 					parser/preprocess_line \
 					parser/seperate_commands \
 					parser/skip_atleast \
@@ -54,10 +59,12 @@ SRC_FILES		=	main \
 					runtime_loop/runtime_loop \
 					runtime_loop/evaluate_input \
 					std/ft_realloc \
+					std/ft_perror \
 					table/table_destroy \
 					table/table_get \
 					table/table_insert \
 					table/table_new \
+					table/table_remove \
 					vector/vector_destroy \
 					vector/vector_get \
 					vector/vector_getr \

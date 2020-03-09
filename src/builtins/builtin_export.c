@@ -57,8 +57,6 @@ static t_bool	try_set(
 	var[1] = ft_substr(str, location + 1, location - length);
 	if (var[0] == NULL || var[1] == NULL)
 		return (free_pair(var[0], var[1]));
-	if (!table_insert(env, var[0], var[1]))
-		return (free_pair(var[0], var[1]));
 	if (!is_valid_identifier(var[0]))
 	{
 		ft_putstr_fd("export: ", 2);
@@ -68,10 +66,12 @@ static t_bool	try_set(
 		free_pair(var[0], var[1]);
 		return (2);
 	}
+	if (!table_insert(env, var[0], var[1]))
+		return (free_pair(var[0], var[1]));
 	return (0);
 }
 
-int	export_main(
+int				export_main(
 		int argc,
 		char **argv,
 		t_table *env)

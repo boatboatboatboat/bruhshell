@@ -12,6 +12,7 @@
 
 #include <unistd.h>
 #include <ministd.h>
+#include <libft.h>
 
 int	cd_main(
 		int argc,
@@ -19,7 +20,8 @@ int	cd_main(
 {
 	if (argc > 1 && chdir(argv[1]) == -1)
 	{
-		ft_perror("cd");
+		ft_putstr_fd("cd: ", 2);
+		ft_perror(argv[1]);
 		return (1);
 	}
 	return (0);

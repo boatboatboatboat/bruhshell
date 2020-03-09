@@ -23,5 +23,6 @@ char	*ft_realloc(
 		char *ptr,
 		size_t ocapacity,
 		size_t capacity);
+void	ft_perror(char *str);
 
 #endif

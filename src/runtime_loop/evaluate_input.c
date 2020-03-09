@@ -23,40 +23,54 @@
 **  evaluate (evaluate the comamnd
 */
 
-int		expand_evaluate(
-		t_string_slice *command,
+static int	evaluate_unit(
+		char *line,
 		t_table *env)
 {
+	char		*pline_cpy;
 	t_vector	instructions;
-	char		*line;
-	char		*orgline;
 
 	if (!vector_new(&instructions, sizeof(t_instruction)))
 		return (0);
-	command->str[command->len] = '\0';
-	if (!expand_line(command->str, env, &orgline))
-	{
-		ft_printf("eval error: failed to expand line\n");
-		return (0);
-	}
-	line = orgline;
-	if (!parse_line(&line, &instructions))
+	pline_cpy = line;
+	if (!parse_line(&pline_cpy, &instructions))
 	{
 		ft_printf("eval error: failed to parse line\n");
-		free(orgline);
+		vector_destroy(&instructions);
 		return (0);
 	}
-	free(orgline);
 	if (!vm_execute(&instructions, env))
 	{
-		ft_printf("eval error: virtual machine crashed\n");
+		ft_printf(("eval error: virtual machine crashed\n"));
+		vector_destroy(&instructions);
 		return (0);
 	}
 	vector_destroy(&instructions);
 	return (1);
 }
 
-int		evaluate_input(
+static int	expand_evaluate(
+		t_string_slice *command,
+		t_table *env)
+{
+	char		*line;
+
+	command->str[command->len] = '\0';
+	if (!expand_line(command->str, env, &line))
+	{
+		ft_printf("eval error: failed to expand line\n");
+		return (0);
+	}
+	if (!evaluate_unit(line, env))
+	{
+		free(line);
+		return (0);
+	}
+	free(line);
+	return (1);
+}
+
+int			evaluate_input(
 		char *input,
 		t_table *env)
 {
@@ -74,6 +88,7 @@ int		evaluate_input(
 	if (!seperate_commands(sanitized, &commands))
 	{
 		ft_printf("preprocessor error: failed to seperate commands\n");
+		free(sanitized);
 		vector_destroy(&commands);
 		return (1);
 	}

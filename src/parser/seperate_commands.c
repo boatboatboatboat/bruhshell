@@ -13,11 +13,6 @@
 #include <parser.h>
 #include <vector.h>
 
-static t_bool	is_string_quote(char c)
-{
-	return (c == STRING_SINGLE_QUOTE || c == STRING_DOUBLE_QUOTE);
-}
-
 static void		switch_mode(
 		int *mode,
 		char input)
