@@ -138,6 +138,26 @@ static t_bool	expand_line_core(
 	return (true);
 }
 
+/*
+** expand_line: expand variables within a command group/line
+**
+** essentially environment variables are replaced with their values
+** this also handles program status ($?).
+** this parser is string and escape aware.
+**
+** tl;dr:
+** given the environment:
+**  BRUH=1234
+**  hello=world
+**
+** the commands are converted as follows:
+**  echo $BRUH -> echo 1234
+**  echo "hello $hello" -> echo "hello world"
+**  echo \$BRUH -> echo $BRUH
+**  echo $hello$hello -> echo worldworld
+**  echo '$hello' -> echo $hello
+*/
+
 t_bool			expand_line(
 		char *input,
 		t_table *env,

@@ -43,6 +43,29 @@ t_bool	cb_string_core(
 	return (!(chr != '\0' && !vector_push(out, &chr)));
 }
 
+/*
+** cb_string:
+**  parse a string with ' or " quotes
+**  return the insides of that string through output
+**  most of the core loop is inside of cb_string_core
+**
+**  handles escape characters in DOUBLE QUOTE STRINGS ("bruh")
+**   and handles them literally in SINGLE QUOTE STRINGS ('bruh').
+**
+**  escape characters are only escaped if the next character is escapable,
+**  otherwise the escape indicator (backslash, '\') is handled literally.
+**
+**  tl;dr:
+**
+**  cb_string("\"hello, world!\"") -> hello, world!
+**  cb_string("'hello, world!'") -> hello, world!
+**  cb_string("\"hello\world\"") -> hello\world
+**  cb_string("\"hello\"world\"") -> hello"world
+**  cb_string("'hello\'world'") -> hello\'world
+**  cb_string("'hello\\world'") -> hello\\world
+**  cb_string("\"hello\\world\"") -> hello\world
+*/
+
 t_bool	cb_string(
 		char **input,
 		char **output)
@@ -102,6 +125,17 @@ t_bool	cb_unit_core(
 	}
 	return (true);
 }
+
+/*
+** cb_unit:
+**  parses command 'units'
+**  a unit is literally text-that-is-not-in-string-quotes
+**
+**  tl;dr:
+**  echo hello -> echo and hello are both units
+**  echo "hello" -> echo is a unit, hello is a string
+**  "echo" 'hello' -> echo is a string, hello is a string
+*/
 
 t_bool	cb_unit(
 		char **input,

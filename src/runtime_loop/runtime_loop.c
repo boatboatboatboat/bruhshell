@@ -30,15 +30,15 @@ int		runtime_loop(t_table *env)
 
 	while (true)
 	{
-		if (display_prompt(env) != 0)
+		if (display_prompt(env) != DISPLAY_PROMPT_SUCCESS)
 			break ;
 		res = take_input(&input_buffer);
-		if (res == 2)
-			return (0);
-		if (res == 1)
+		if (res == TAKE_INPUT_EXIT_CALLED)
+			return (RUNTIME_LOOP_EXIT);
+		if (res == TAKE_INPUT_READLINE_FAILED)
 			break ;
 		evaluate_input(input_buffer, env);
 		free(input_buffer);
 	}
-	return (1);
+	return (RUNTIME_LOOP_CRASH);
 }

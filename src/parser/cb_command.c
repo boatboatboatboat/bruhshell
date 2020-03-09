@@ -31,6 +31,14 @@ static t_bool	cb_command_core(
 	return (true);
 }
 
+/*
+** cb_command: parse a command and its arguments
+**  essentially "expect a list of units/strings"
+**  it does not place it directly on the instruction stack
+**  instead it returns a t_command_pair used as operand to OP_COMMAND...
+**  ... (i think)
+*/
+
 t_bool			cb_command(
 		char **input,
 		t_command_pair *output)

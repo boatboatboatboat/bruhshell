@@ -14,6 +14,11 @@
 #include <stdlib.h>
 
 /*
+** destroy_instruction:
+** given an instruction, if the instruction is marked as one that allocates
+**  (basically anything that's not CALL or PIPE)
+** it will free whatever is allocated and associated with the instruction
+**
 ** warning:
 ** this function DOES modify t_vector *instructions,
 ** even if it fails!
@@ -63,6 +68,14 @@ static t_bool	parse_op_and_com(
 	return (true);
 }
 
+/*
+** clean_instructions:
+** destroy all the instructions that have been created so far
+**
+** because prior to a parser error instructions might've been created
+** so we need to free those as well
+*/
+
 static t_bool	clean_instructions(t_vector *instructions)
 {
 	t_instruction	out;
@@ -71,6 +84,26 @@ static t_bool	clean_instructions(t_vector *instructions)
 		destroy_instruction(out);
 	return (false);
 }
+
+/*
+** parse_line:
+** takes a line/command group (so, a previously seperated line, aka, no ';')
+** and compiles it into instructions
+** ReAd tHE vM DOCS fOr More INfo On INStructIOns
+**
+** the parser is built as a classical & combinator hybrid (spaghetti),
+**  mostly using something along the lines of recursive descent
+**
+** a command group/line is handled as follows (using EBNF, skipping spaces)
+** line = command-pair { op_and_com } ;
+** op_and_com = operator, command-pair
+** command-pair = command { , args } ;
+** command = unit | string ;
+** args = unit | string ;
+** operator = ">" | ">>" | "|" | "<" ;
+** unit = anything that's not a string
+** string = anything that's in string quotations ("bruh", 'bruh')
+*/
 
 t_bool			parse_line(
 		char **input,

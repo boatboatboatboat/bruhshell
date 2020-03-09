@@ -48,6 +48,19 @@ static t_bool	separate_core_loop(
 	return (true);
 }
 
+/*
+** seperate_commands:
+**  string-aware command seperation with ;
+**  returns string slices (pointers+length within a string)
+**  for each command within that string
+**
+** tl;dr:
+** seperate_commands("echo fuck; echo kitchen");
+** returns t_vector<t_string_slice>:
+**   { str: 'echo fuck; echo kitchen', length: 9 }
+**   { str: ' echo kitchen', length: 13 }
+*/
+
 t_bool			separate_commands(
 		char *input,
 		t_vector *commands)

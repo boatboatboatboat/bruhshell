@@ -52,6 +52,11 @@ const char	*g_sig_names[22] =
 
 int			g_program_status = 0;
 
+/*
+** Gets the pipes for a given process. Read vm_execute.c's pipestack
+**  distribution explanation for uh, more explanation. :-)
+*/
+
 static void	get_pipes(
 		t_vm_state *state,
 		size_t idx,
@@ -70,6 +75,13 @@ static void	get_pipes(
 	else
 		ft_memcpy(pipe_temp, g_no_pipes, sizeof(g_no_pipes));
 }
+
+/*
+** spawn_process:
+**  Create and run a new process given a command pair.
+**  Checks whether a command is a builtin or not. If it is a builtin,
+**   the builtin command will be executed with priority over a regular command.
+*/
 
 static int	spawn_process(
 		t_vm_state *state,
@@ -93,6 +105,18 @@ static int	spawn_process(
 	vector_destroy(&command->args);
 	return (pid != -1);
 }
+
+/*
+** wait_for_processes:
+**  Waits for all running processes to end.
+**  The status of the 'top'/main process will be set as eventual status.
+**  If a (potentially deadly) signal is received, it will print -
+**   a signal message (usually a signal name) followed by the signal number.
+**  If the process exited normally, the program status ($?) will be set
+**  to the exit code of the process.
+**  If the signal exited through a signal, the program status ($?) will be
+**  set to 128 + the signal number.
+*/
 
 static void	wait_for_processes(void)
 {

@@ -52,7 +52,7 @@ int		display_prompt(t_table *env)
 	if (current_directory == NULL)
 	{
 		ft_perror("unable to get working directory");
-		return (1);
+		return (DISPLAY_PROMPT_CWD_FAIL);
 	}
 	home = table_get(env, "HOME");
 	if (home != NULL)
@@ -65,5 +65,5 @@ int		display_prompt(t_table *env)
 	else
 		ft_printf(PROMPT_STRING, current_directory);
 	free(current_directory);
-	return (0);
+	return (DISPLAY_PROMPT_SUCCESS);
 }
