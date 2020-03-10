@@ -66,7 +66,7 @@ static t_bool	run_pipeless(
 	if (ft_strncmp(name, "exit", 5) == 0)
 		*ret = (exit_main(args->size, (char **)args->raw));
 	else if (ft_strncmp(name, "cd", 3) == 0)
-		*ret = (cd_main(args->size, (char **)args->raw));
+		*ret = (cd_main(args->size, (char **)args->raw, env));
 	else if (ft_strncmp(name, "unset", 6) == 0)
 		*ret = (unset_main(args->size, (char **)args->raw, env));
 	else if (ft_strncmp(name, "export", 7) == 0)

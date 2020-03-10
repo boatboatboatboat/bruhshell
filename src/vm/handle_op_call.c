@@ -89,7 +89,6 @@ static int	spawn_process(
 		int pipe_temp[2])
 {
 	int		pid;
-	char	*destructor;
 
 	if (is_builtin(command->command))
 	{
@@ -100,9 +99,6 @@ static int	spawn_process(
 	else
 		pid = run_process(&command->args, &state->pipestack, pipe_temp,
 				state->env);
-	while (vector_pop(&command->args, &destructor))
-		free(destructor);
-	vector_destroy(&command->args);
 	return (pid != -1);
 }
 
@@ -155,6 +151,7 @@ int			handle_op_call(
 	t_command_pair	*command;
 
 	idx = 0;
+	(void)instruction;
 	while (idx < state->callstack.size)
 	{
 		vector_getr(&state->callstack, idx, (void **)&command);
@@ -169,8 +166,8 @@ int			handle_op_call(
 	if (!(vector_new(&state->pipestack, sizeof(int))
 		& vector_new(&state->callstack, sizeof(t_command_pair))))
 		return (0);
-	instruction->opcode = -1;
-	if (!vector_push(&state->pipestack, &instruction->opcode))
+	pipe_temp[0] = -1;
+	if (!vector_push(&state->pipestack, &pipe_temp[0]))
 		return (0);
 	return (1);
 }

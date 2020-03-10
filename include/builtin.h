@@ -34,7 +34,8 @@ int		exit_main(
 		char **argv);
 int		cd_main(
 		int argc,
-		char **argv);
+		char **argv,
+		t_table *env);
 int		pwd_main(
 		int argc,
 		char **argv);

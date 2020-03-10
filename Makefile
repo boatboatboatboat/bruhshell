@@ -69,11 +69,13 @@ SRC_FILES		=	main \
 					vector/vector_get \
 					vector/vector_getr \
 					vector/vector_new \
+					vector/vector_new_dtor \
 					vector/vector_push \
 					vector/vector_pop \
 					vector/vector_foreach \
 					vector/vector_resize \
 					vector/vector_with_capacity \
+					vector/vector_with_capacity_dtor \
 					vm/handle_op_append \
 					vm/handle_op_call \
 					vm/handle_op_command \

@@ -28,16 +28,27 @@
 
 static void		destroy_instruction(t_instruction instruction)
 {
-	char	*tmp;
-
 	if (instruction.opcode == OP_COMMAND)
-	{
-		while (vector_pop(&instruction.operand.pair.args, &tmp))
-			free(tmp);
 		vector_destroy(&instruction.operand.pair.args);
-	}
 	else if (instruction.opcode != OP_CALL && instruction.opcode != OP_PIPE)
 		free(instruction.operand.filename);
+}
+
+/*
+** clean_instructions:
+** destroy all the instructions that have been created so far
+**
+** because prior to a parser error instructions might've been created
+** so we need to free those as well
+*/
+
+t_bool			clean_instructions(t_vector *instructions)
+{
+	t_instruction	out;
+
+	while (vector_pop(instructions, &out))
+		destroy_instruction(out);
+	return (false);
 }
 
 static t_bool	parse_op_and_com(
@@ -66,23 +77,6 @@ static t_bool	parse_op_and_com(
 			return (false);
 	}
 	return (true);
-}
-
-/*
-** clean_instructions:
-** destroy all the instructions that have been created so far
-**
-** because prior to a parser error instructions might've been created
-** so we need to free those as well
-*/
-
-static t_bool	clean_instructions(t_vector *instructions)
-{
-	t_instruction	out;
-
-	while (vector_pop(instructions, &out))
-		destroy_instruction(out);
-	return (false);
 }
 
 /*

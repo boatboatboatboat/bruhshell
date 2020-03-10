@@ -16,6 +16,15 @@
 #include <stdlib.h>
 
 /*
+** literally a dtor wrapper
+*/
+
+static void	cleanup_instructions(t_vector *self)
+{
+	clean_instructions(self);
+}
+
+/*
 ** evaluate_unit: parse and execute a command
 **  compiles a command without expanding variables
 **  and executes it within the "vm"
@@ -28,7 +37,8 @@ static int	evaluate_unit(
 	char		*pline_cpy;
 	t_vector	instructions;
 
-	if (!vector_new(&instructions, sizeof(t_instruction)))
+	if (!vector_new_dtor(&instructions, sizeof(t_instruction),
+			cleanup_instructions))
 		return (0);
 	pline_cpy = line;
 	if (!parse_line(&pline_cpy, &instructions))

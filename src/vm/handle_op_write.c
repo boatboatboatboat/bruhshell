@@ -23,7 +23,6 @@ int	handle_op_write(
 	pipe_temp[0] = open(instruction->operand.filename,
 			O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	pipe_temp[1] = -1;
-	free(instruction->operand.filename);
 	if (pipe_temp[0] == -1)
 		ft_perror("failed to open file");
 	if (!(vector_push(&state->pipestack, &pipe_temp[0])

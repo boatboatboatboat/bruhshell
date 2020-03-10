@@ -78,5 +78,6 @@ t_bool			expand_line(
 				char **output);
 t_bool			is_escapable(char c);
 t_bool			is_string_quote(char c);
+t_bool			clean_instructions(t_vector *instructions);
 
 #endif

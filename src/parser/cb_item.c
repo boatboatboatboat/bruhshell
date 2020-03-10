@@ -123,7 +123,7 @@ t_bool	cb_unit_core(
 }
 
 /*
-** cb_item (previously cb_unit):
+** cb_item (previously cb_unit)
 **  THESE DOCS ARE BAD
 **  CONTACT ME ON SLACK FOR THIS LOL
 **  parses command 'units'

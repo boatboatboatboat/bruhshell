@@ -10,23 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
-#include <fcntl.h>
+#include <vector.h>
 #include <stdlib.h>
 
-int	handle_op_read(
-		t_instruction *instruction,
-		t_vm_state *state)
+t_bool	vector_with_capacity_dtor(
+		t_vector *self,
+		size_t type_size,
+		size_t capacity,
+		void (*dtor)(struct s_vector *self))
 {
-	int	*previous_pipe;
-
-	if (state->pipestack.size == 1)
-		vector_getr(&state->pipestack, 0, (void **)&previous_pipe);
-	else
-		vector_getr(&state->pipestack, state->pipestack.size - 1,
-				(void **)&previous_pipe);
-	*previous_pipe = open(instruction->operand.filename, O_RDONLY);
-	if (*previous_pipe == -1)
-		ft_perror("failed to open file");
-	return (1);
+	if (!vector_with_capacity(self, type_size, capacity))
+		return (false);
+	self->dtor = dtor;
+	return (true);
 }

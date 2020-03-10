@@ -13,6 +13,14 @@
 #include <parser.h>
 #include <stdlib.h>
 
+static void		cleanup_args(t_vector *self)
+{
+	char	*item;
+
+	while (vector_pop(self, &item))
+		free(item);
+}
+
 static t_bool	cb_command_core(
 		char **input,
 		t_vector *args,
@@ -21,7 +29,6 @@ static t_bool	cb_command_core(
 {
 	if (!vector_push(args, &tmp))
 	{
-		vector_destroy(args);
 		free(out->command);
 		free(tmp);
 		return (false);
@@ -47,14 +54,13 @@ t_bool			cb_command(
 	t_command_pair	out;
 	char			*tmp;
 
-	if (!vector_new(&args, sizeof(char *)))
+	if (!vector_new_dtor(&args, sizeof(char *), cleanup_args))
 		return (false);
 	take_while(input, NULL, is_literal_space);
 	if (!cb_item(input, &out.command))
 		return (false);
 	if (!vector_push(&args, &out.command))
 	{
-		vector_destroy(&args);
 		free(out.command);
 		return (false);
 	}
