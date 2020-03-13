@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#    Project: memeshell420                                ::::::::             #
-#    Members: dpattij, tuperera                         :+:    :+:             #
-#    Copyright: 2020                                   +:+                     #
-#                                                     +#+                      #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By:                                              +#+                      #
 #                                                    +#+                       #
-#                                                   #+#    #+#                 #
-#    if you read this you are stupid lol           ########   odam.nl          #
+#    Created: Invalid date        by                #+#    #+#                 #
+#    Updated: 2020/03/13 12:37:44 by tuperera      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,8 @@ SRC_FILES		=	main \
 					vm/handle_op_read \
 					vm/handle_op_write \
 					vm/run_process \
-					vm/vm_execute
+					vm/vm_execute  \
+					vm/switch_to_process
 
 ###########################
 
