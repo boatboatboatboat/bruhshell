@@ -3,10 +3,10 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: dpattij <dpattij@student.codam.nl>           +#+                      #
+#    By: bruh <bruh@bruh.bruh>                        +#+                      #
 #                                                    +#+                       #
-#    Created: 2019/11/07 01:15:55 by dpattij        #+#    #+#                 #
-#    Updated: 2020/02/20 19:33:29 by dpattij          ###   ########.fr        #
+#    Created: 2020/04/13 22:04:57 by bruh           #+#    #+#                 #
+#    Updated: 2020/04/13 22:04:57 by bruh          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 

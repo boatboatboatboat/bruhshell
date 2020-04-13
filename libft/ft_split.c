@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_split.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: tuperera <tuperera@student.codam.nl>         +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/30 11:26:22 by tuperera       #+#    #+#                */
-/*   Updated: 2019/11/08 15:29:48 by tuperera      ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:25 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:25 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

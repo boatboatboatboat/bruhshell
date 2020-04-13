@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   math.c                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/22 02:42:51 by anonymous      #+#    #+#                */
-/*   Updated: 2019/11/25 23:19:43 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:04:53 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:04:53 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

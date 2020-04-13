@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_memccpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/28 14:12:00 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/12 18:57:43 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:18 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:18 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   flag_formatwidth.c                                 :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/24 01:09:31 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/24 01:12:32 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:04:44 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:04:44 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

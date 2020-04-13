@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   handler_uint_hex_upper.c                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/07 03:07:08 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/25 19:28:32 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:04:52 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:04:52 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

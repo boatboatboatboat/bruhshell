@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_isinset.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/30 18:31:45 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/11 17:43:36 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:06 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:06 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

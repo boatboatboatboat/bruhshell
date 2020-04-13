@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   number_length.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/07 22:38:55 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/25 19:44:14 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:04:54 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:04:54 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   printf.h                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/07 01:19:25 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/25 23:08:02 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:03:06 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:03:06 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # define BASE_10 "0123456789"
 # define BASE_16LOW "0123456789abcdef"
 # define BASE_16UP "0123456789ABCDEF"
-# define FLAG_ZERO_PADDING (char)0x1
-# define FLAG_LEFT_JUSTIFY (char)0x2
-# define FLAG_PRECISION_SET (char)0x4
-# define FLAG_WIDTHARG_SET (char)0x8
-# define FLAG_ALTERNATIVE (char)0x10
-# define FLAG_GROUPEDBY1K (char)0x20
+# define FLAG_ZERO_PADDING 1
+# define FLAG_LEFT_JUSTIFY 2
+# define FLAG_PRECISION_SET 4
+# define FLAG_WIDTHARG_SET 8
+# define FLAG_ALTERNATIVE 16
+# define FLAG_GROUPEDBY1K 32
 
 typedef struct	s_flags
 {

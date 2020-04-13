@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_putendl_fd.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 17:44:58 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/01 18:51:57 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:23 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:23 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   flag_zeropadding.c                                 :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/22 20:28:07 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/24 01:07:24 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:04:47 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:04:47 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

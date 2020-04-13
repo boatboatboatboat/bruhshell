@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   putchr.c                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/24 02:22:26 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/28 16:02:53 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:04:55 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:04:55 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

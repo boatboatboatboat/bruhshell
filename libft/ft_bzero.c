@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_bzero.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/28 13:37:12 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/07 18:02:37 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:03 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:03 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

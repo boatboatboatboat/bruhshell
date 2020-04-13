@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   flag_leftjustify.c                                 :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/23 22:45:43 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/24 01:07:17 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:04:45 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:04:45 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

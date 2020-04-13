@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_lstadd_front_bonus.c                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 19:12:33 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/04 21:15:11 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:11 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:11 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

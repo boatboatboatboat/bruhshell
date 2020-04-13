@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_lstclear_bonus.c                                :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 19:36:35 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/09 19:03:58 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:11 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:11 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   flag_doprecision.c                                 :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/24 00:36:52 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/28 17:03:25 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:04:42 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:04:42 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

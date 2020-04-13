@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   libft.h                                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 17:51:38 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/05 21:20:28 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:04:31 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:04:31 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 
 # ifndef NULL
-#  define NULL (void *)0
+#  define NULL 0
 # endif
 
 # ifndef LONG_MAX

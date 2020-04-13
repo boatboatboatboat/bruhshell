@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   flag_alternative_bonus.c                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/24 00:57:44 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/24 01:07:40 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:04:40 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:04:40 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

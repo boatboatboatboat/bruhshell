@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_isdigit.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/28 17:49:41 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/09 22:12:48 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:05 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:05 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

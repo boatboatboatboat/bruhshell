@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_itoa.c                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 17:11:37 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/09 22:58:57 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:10 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:10 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

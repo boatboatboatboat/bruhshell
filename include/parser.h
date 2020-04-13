@@ -5,7 +5,7 @@
 /*   Created by dpattij <dpattij@student.codam.nl>     +:+                    */
 /*                                                    +#+                     */
 /*   void *data = NULL;                              +#+                      */
-/*   while (data == NULL)                           #+#    #+#                */
+/*   while (data == NULL)                          #+#    #+#                 */
 /*       data = malloc(1337 * 42 * 21);            ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */

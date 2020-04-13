@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_putstr_fd.c                                     :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 17:37:44 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/04 21:26:17 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:24 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:24 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

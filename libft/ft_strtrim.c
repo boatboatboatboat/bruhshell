@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_strtrim.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/28 19:28:57 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/11 17:44:52 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:33 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:33 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

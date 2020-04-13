@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_memset.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/28 13:26:24 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/01 18:52:38 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:21 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:21 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

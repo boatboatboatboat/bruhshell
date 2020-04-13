@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_strmapi.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 17:27:18 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/09 22:24:34 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:29 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:29 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

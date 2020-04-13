@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_strlcpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dpattij <dpattij@student.codam.nl>           +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/28 16:19:49 by dpattij        #+#    #+#                */
-/*   Updated: 2019/11/04 21:30:05 by dpattij       ########   odam.nl         */
+/*   Created: 2020/04/13 22:05:28 by bruh          #+#    #+#                 */
+/*   Updated: 2020/04/13 22:05:28 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
