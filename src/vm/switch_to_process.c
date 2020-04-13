@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   switch_to_process.c                                :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: tuperera <tuperera@student.codam.nl>         +#+                     */
+/*   By: bruh <bruh@bruh.bruh>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/13 12:34:06 by tuperera       #+#    #+#                */
-/*   Updated: 2020/03/13 15:07:48 by tuperera      ########   odam.nl         */
+/*   Created: 2020/04/13 21:36:11 by bruh           #+#    #+#                */
+/*   Updated: 2020/04/13 21:36:11 by bruh          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
