@@ -29,8 +29,6 @@ int			do_useless_thing(t_table *env)
 	size_t			idx;
 	t_table_entry	entry;
 
-	(void)argc;
-	(void)argv;
 	idx = 0;
 	while (idx < env->size)
 	{
