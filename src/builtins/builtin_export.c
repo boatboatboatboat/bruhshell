@@ -94,6 +94,8 @@ int				export_main(
 	argc -= 1;
 	errored = 0;
 	ft_bzero(var, sizeof(char *[2]));
+	if (argc == 0)
+		return (do_useless_thing(env));
 	while (idx < argc)
 	{
 		idx += 1;
