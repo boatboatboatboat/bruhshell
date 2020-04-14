@@ -133,9 +133,10 @@ static void	wait_for_processes(void)
 				status = WTERMSIG(status);
 				g_program_status = 128 + status;
 				if (status < 23 && status != 2)
-					ft_printf("%s: %d\n", g_sig_names[status], status);
+					ft_printf("%s: %d", g_sig_names[status], status);
 				else if (status != 2)
-					ft_printf("Unknown Signal: %d\n", status);
+					ft_printf("Unknown Signal: %d", status);
+				ft_printf("\n");
 			}
 			top = 0;
 		}
