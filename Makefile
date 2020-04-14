@@ -34,6 +34,7 @@ SRC_FILES		=	main \
 					builtins/builtin_env \
 					builtins/builtin_exit \
 					builtins/builtin_export \
+					builtins/builtin_exportuseless \
 					builtins/builtin_manage \
 					builtins/builtin_pwd \
 					builtins/builtin_unset \
