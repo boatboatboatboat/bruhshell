@@ -46,7 +46,7 @@ static char	**get_env(t_table *env)
 	char			**envir;
 
 	envir = ft_calloc(env->size, sizeof(char *));
-	ft_bzero(idx, sizeof(size_t * 2));
+	ft_bzero(idx, sizeof(size_t) * 2);
 	while (idx[0] < env->size)
 	{
 		if (vector_get(env, idx[0], &entry) && entry.value != NULL)
