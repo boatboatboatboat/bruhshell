@@ -100,6 +100,8 @@ int			switch_to_process(
 	int			i;
 
 	envir = get_env(env);
+	if (ft_strchr(args[0], '/') != NULL)
+		return (execute_pathless(args, envir));
 	path = table_get(env, "PATH");
 	paths = ft_split(path, ':');
 	i = 0;
@@ -112,7 +114,5 @@ int			switch_to_process(
 		i++;
 	}
 	free(paths);
-	if (ft_strchr(args[0], '/') != NULL)
-		return (execute_pathless(args, envir));
 	return (ENOENT);
 }
