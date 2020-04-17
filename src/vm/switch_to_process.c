@@ -84,9 +84,9 @@ void		switch_to_process(
 	char		*check;
 	int			i;
 
+	envir = get_env(env);
 	path = table_get(env, "PATH");
 	paths = ft_split(path, ':');
-	envir = get_env(env);
 	i = 0;
 	while (paths != NULL && paths[i])
 	{
@@ -97,9 +97,6 @@ void		switch_to_process(
 		i++;
 	}
 	free(paths);
-	path = getcwd(NULL, 0);
-	if (path != NULL && check_dir((char **)args, path) != NULL)
-		get_executable(path, envir, args);
-	execve(args[0], args, envir);
-	free(path);
+	if (ft_strchr(args[0], '/') != NULL)
+		execve(args[0], args, envir);
 }
