@@ -77,6 +77,18 @@ static int	get_executable(char *path, char **envir, char *const *args)
 	return (0);
 }
 
+static int	execute_pathless(char *const *args, char **envir)
+{
+	char	*cwd;
+
+	cwd = getcwd(NULL, 0);
+	if (cwd != NULL && check_dir((char **)args, cwd) != NULL)
+		get_executable(cwd, envir, args);
+	execve(args[0], args, envir);
+	free(cwd);
+	return (errno);
+}
+
 int			switch_to_process(
 			char *const *args,
 			t_table *env)
@@ -101,6 +113,6 @@ int			switch_to_process(
 	}
 	free(paths);
 	if (ft_strchr(args[0], '/') != NULL)
-		return (execve(args[0], args, envir) ? errno : errno);
+		return (execute_pathless(args, envir));
 	return (ENOENT);
 }
