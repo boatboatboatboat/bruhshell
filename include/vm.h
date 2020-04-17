@@ -88,6 +88,6 @@ int				handle_op_write(
 				t_instruction *instruction,
 				t_vm_state *state);
 char			*check_dir(char **args, char *path);
-void			switch_to_process(char *const *args, t_table *env);
+int				switch_to_process(char *const *args, t_table *env);
 
 #endif

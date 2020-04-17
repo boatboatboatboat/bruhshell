@@ -76,11 +76,11 @@ int			run_process(
 	if (pid == 0)
 	{
 		build_pipes(pipe_stack, pipes);
-		switch_to_process((char *const *)args->raw, env);
+		pid = switch_to_process((char *const *)args->raw, env);
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
 		ft_putstr_fd(cmd, STDERR_FILENO);
 		ft_putstr_fd(": ", STDERR_FILENO);
-		ft_putendl_fd(strerror(errno), STDERR_FILENO);
+		ft_putendl_fd(strerror(pid), STDERR_FILENO);
 		close_pipes(pipes);
 		exit(127);
 	}

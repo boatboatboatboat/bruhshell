@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <table.h>
 #include <stdlib.h>
+#include <sys/errno.h>
 
 char		*check_dir(char **args, char *path)
 {
@@ -66,15 +67,16 @@ static char	**get_env(t_table *env)
 	return (envir);
 }
 
-static void	get_executable(char *path, char **envir, char *const *args)
+static int	get_executable(char *path, char **envir, char *const *args)
 {
 	ft_strlcat(path, "/", ft_strlen(path) + 2);
 	ft_strlcat(path, args[0], ft_strlen(args[0])
 				+ ft_strlen(path) + 1);
 	execve(path, (char **)args, envir);
+	return (0);
 }
 
-void		switch_to_process(
+int			switch_to_process(
 			char *const *args,
 			t_table *env)
 {
@@ -92,11 +94,12 @@ void		switch_to_process(
 	{
 		check = check_dir((char **)args, paths[i]);
 		if (check != NULL)
-			get_executable(paths[i], envir, args);
+			return (get_executable(paths[i], envir, args) ? errno : errno);
 		free(paths[i]);
 		i++;
 	}
 	free(paths);
 	if (ft_strchr(args[0], '/') != NULL)
-		execve(args[0], args, envir);
+		return (execve(args[0], args, envir) ? errno : errno);
+	return (ENOENT);
 }
