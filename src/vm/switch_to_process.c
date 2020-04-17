@@ -41,31 +41,31 @@ char		*check_dir(char **args, char *path)
 
 static char	**get_env(t_table *env)
 {
-	size_t			idx;
+	size_t			idx[2];
 	t_table_entry	entry;
 	char			**envir;
 
-	envir = malloc(sizeof(char *) * env->size);
-	idx = 0;
-	while (idx < env->size)
+	envir = ft_calloc(env->size, sizeof(char *));
+	ft_bzero(idx, sizeof(size_t * 2));
+	while (idx[0] < env->size)
 	{
-		if (vector_get(env, idx, &entry) && entry.value != NULL)
+		if (vector_get(env, idx[0], &entry) && entry.value != NULL)
 		{
-			envir[idx] = malloc(sizeof(char) * (ft_strlen(entry.key)
+			envir[idx[1]] = malloc(sizeof(char) * (ft_strlen(entry.key)
 								+ ft_strlen(entry.value) + 2));
-			if (envir[idx] != NULL)
+			if (envir[idx[1]] != NULL)
 			{
-				ft_strlcat(envir[idx], entry.key, ft_strlen(envir[idx])
+				ft_strlcat(envir[idx[1]], entry.key, ft_strlen(envir[idx[1]])
 				+ ft_strlen(entry.key) + 1);
-				ft_strlcat(envir[idx], "=", ft_strlen(envir[idx]) + 2);
-				ft_strlcat(envir[idx], entry.value, ft_strlen(envir[idx])
+				ft_strlcat(envir[idx[1]], "=", ft_strlen(envir[idx[1]]) + 2);
+				ft_strlcat(envir[idx[1]], entry.value, ft_strlen(envir[idx[1]])
 				+ ft_strlen(entry.value) + 1);
+				idx[1] += 1;
 				printf("envir[%lu] = %s\n", idx, envir[idx]);
 			}
 		}
-		idx += 1;
+		idx[0] += 1;
 	}
-	envir[idx] = NULL;
 	return (envir);
 }
 
