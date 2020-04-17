@@ -60,7 +60,7 @@ static char	**get_env(t_table *env)
 				ft_strlcat(envir[idx[1]], "=", ft_strlen(envir[idx[1]]) + 2);
 				ft_strlcat(envir[idx[1]], entry.value, ft_strlen(envir[idx[1]])
 				+ ft_strlen(entry.value) + 1);
-				printf("envir[%lu] = %s\n", idx, envir[idx[1]]);
+				printf("envir[%lu] = %s\n", idx[1], envir[idx[1]]);
 				idx[1] += 1;
 			}
 		}
