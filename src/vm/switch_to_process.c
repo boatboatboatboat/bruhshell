@@ -16,6 +16,7 @@
 #include <table.h>
 #include <stdlib.h>
 #include <sys/errno.h>
+#include <stdio.h>
 
 char		*check_dir(char **args, char *path)
 {
@@ -59,6 +60,7 @@ static char	**get_env(t_table *env)
 				ft_strlcat(envir[idx], "=", ft_strlen(envir[idx]) + 2);
 				ft_strlcat(envir[idx], entry.value, ft_strlen(envir[idx])
 				+ ft_strlen(entry.value) + 1);
+				printf("envir[%d] = %s\n", idx, envir[idx]);
 			}
 		}
 		idx += 1;
