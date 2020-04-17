@@ -45,7 +45,7 @@ static char	**get_env(t_table *env)
 	t_table_entry	entry;
 	char			**envir;
 
-	envir = ft_calloc(env->size, sizeof(char *));
+	envir = ft_calloc(env->size + 1, sizeof(char *));
 	ft_bzero(idx, sizeof(size_t) * 2);
 	while (idx[0] < env->size)
 	{

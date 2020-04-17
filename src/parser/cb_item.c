@@ -14,13 +14,14 @@
 
 t_bool	cb_string_core(
 		char **input,
+		char start,
 		size_t *len,
 		t_vector *out)
 {
 	char chr;
 
 	chr = (*input)[*len];
-	if (chr == '\\' && **input != '\'')
+	if (chr == '\\' && start != '\'')
 	{
 		if (is_escapable((*input)[*len + 1]))
 		{
@@ -82,7 +83,7 @@ t_bool	cb_string(
 	*len += 1;
 	while ((*input)[*len] != start)
 	{
-		if (!cb_string_core(input, len, out))
+		if (!cb_string_core(input, start, len, out))
 			return (false);
 		*len += 1;
 	}
